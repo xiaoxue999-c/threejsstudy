@@ -26,7 +26,7 @@ const controls = new OrbitControls(camera, renderer.domElement)
 let clock = new THREE.Clock()
 // 根据type区分实体 相机 坐标轴
 function animate() {
-  let t = clock.getElapsedTime()//秒
+  let t = clock.getElapsedTime()
   renderer.render(scene, camera)
   requestAnimationFrame(animate)
 }
@@ -42,6 +42,9 @@ const sphere = new THREE.Mesh(sphereGeometry, material);
 // 投射阴影
 sphere.castShadow = true
 scene.add(sphere);
+const smallBall = new THREE.Mesh(new THREE.SphereGeometry(0.1, 20, 20), new THREE.MeshBasicMaterial({ color: 0Xff0000 }))
+smallBall.position.set(6, 2, 2)
+scene.add(smallBall)
 // 创建一个平面
 const geometry = new THREE.PlaneGeometry(50, 50);
 const plane = new THREE.Mesh(geometry, material);
@@ -74,5 +77,3 @@ scene.add(pointLight);
 gui.add(sphere.position, "x").min(-5).max(5).step(0.1)
 gui.add(pointLight, 'distance').min(0).max(20).step(0.1)
 gui.add(pointLight, 'decay').min(0).max(1).step(0.1)
-
-

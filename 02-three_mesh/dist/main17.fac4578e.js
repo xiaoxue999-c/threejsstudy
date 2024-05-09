@@ -41056,7 +41056,7 @@ var controls = new _OrbitControls.OrbitControls(camera, renderer.domElement);
 var clock = new THREE.Clock();
 // 根据type区分实体 相机 坐标轴
 function animate() {
-  var t = clock.getElapsedTime(); //秒
+  var t = clock.getElapsedTime();
   renderer.render(scene, camera);
   requestAnimationFrame(animate);
 }
@@ -41072,6 +41072,11 @@ var sphere = new THREE.Mesh(sphereGeometry, material);
 // 投射阴影
 sphere.castShadow = true;
 scene.add(sphere);
+var smallBall = new THREE.Mesh(new THREE.SphereGeometry(0.1, 20, 20), new THREE.MeshBasicMaterial({
+  color: 0Xff0000
+}));
+smallBall.position.set(6, 2, 2);
+scene.add(smallBall);
 // 创建一个平面
 var geometry = new THREE.PlaneGeometry(50, 50);
 var plane = new THREE.Mesh(geometry, material);
@@ -41129,7 +41134,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "18875" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49736" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
